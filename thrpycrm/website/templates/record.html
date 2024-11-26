@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if customer_record %}
+<div class="card" style="width: 25rem;">
+    <div class="card-header">
+        <strong>
+        {{ customer_record.first_name }}
+        {{ customer_record.last_name }} 
+        </strong>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <strong>ID: </strong>{{ customer_record.id }} </p>
+        <p class="card-text">
+            <strong>Email: </strong>{{ customer_record.email }} </p>
+        <p class="card-text">
+            <strong>Phone: </strong>{{ customer_record.phone }} </p>
+        <p class="card-text">
+            <strong>Address: </strong>{{ customer_record.address }} </p>
+        <p class="card-text">
+            <strong>City: </strong>{{ customer_record.city }} </p>
+        <p class="card-text">
+            <strong>State: </strong>{{ customer_record.state }} </p>
+        <p class="card-text">
+            <strong>Zipcode: </strong>{{ customer_record.zipcode }} </p>
+        <p class="card-text">
+            <strong>Created At: </strong>{{ customer_record.local_created_at }}
+        </p>
+    </div>
+</div>
+<br/>
+
+<!--Back button-->
+<a href="{% url 'home' %}" class="btn" style="color: white; background-color: #F9CC48;"> Back </a>
+
+<!--Delete Button with csrf-->
+<form action="{% url 'delete_record' customer_record.id %}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+    {% csrf_token %}
+    <button type= "submit" class="btn btn-danger"> Delete </button>
+
+</form><!--Update record button-->
+<a href="{% url 'update_record' customer_record.id %}" class="btn" style="color: white; background-color: #52B744 ;"> Update Record </a>
+
+<br/><br/>
+
+<h3>Therapist Notes</h3>
+<form method="POST" class="mb-4">
+    <!--Include record ID as data attributw-->
+    {% csrf_token %}
+    {{ notes_form.as_p }}
+
+    <!--For saving notes-->
+    <input type="hidden" name="save_notes" value="true">
+    <button type="submit" class="btn" style="color: white; background-color: #52B744;">Save</button>
+</form>
+
+{% else %}
+<!--Error handling for missing customer record-->
+<div class="alert alert-danger" role="alert">
+    Customer record not found.
+</div>
+<a href="{% url 'home' %}" class="btn" style="color: white; background-color: #F9CC48;"> Back </a>
+
+
+{% endif %}
+
+{% endblock %}
+

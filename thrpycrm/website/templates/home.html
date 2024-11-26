@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<h1> Hope Seeker Records </h1>
+
+<!-- Search Form -->
+<form method="GET" action="{% url 'home' %}">
+  <div class="mb-3 input-group">
+    <!-- Search button icon -->
+    <button type="submit" class="btn me-2" style="background-color: #F9CC48 ;">
+      <i class="bi bi-search" style="color: white;"></i>  
+    </button>
+    <!--Search bar-->
+    <input type="text" name="search" class="form-control" placeholder="Search records" value="{{ search_query }}">
+  </div>
+  
+</form>
+
+<br />
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm align-top" style="table-layout: fixed; width: 100%;">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" style="word-wrap: break-word;">ID</th>
+        <th scope="col" style="word-wrap: break-word;">Name</th>
+        <th scope="col" style="word-wrap: break-word;">Email</th>
+        <th scope="col" style="word-wrap: break-word;">Phone</th>
+        <th scope="col" style="word-wrap: break-word;">Address</th>
+        <th scope="col" style="word-wrap: break-word;">City</th>
+        <th scope="col" style="word-wrap: break-word;">State</th>
+        <th scope="col" style="word-wrap: break-word;">Zipcode</th>
+        <th scope="col" style="word-wrap: break-word;">Created At</th>      
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">     
+      {% if records %}
+        {% for record in records %}
+          <tr>
+            <td style="word-wrap: break-word;"> <a href="{% url 'record' record.id %}"> {{ record.id }} </a> </td>
+            <td style="word-wrap: break-word;"> {{ record.first_name }} {{ record.last_name }} </td>
+            <td style="word-wrap: break-word;"> {{ record.email }} </td>
+            <td style="word-wrap: break-word;"> {{ record.phone }} </td>
+            <td style="word-wrap: break-word;"> {{ record.address }} </td>
+            <td style="word-wrap: break-word;"> {{ record.city }} </td>
+            <td style="word-wrap: break-word;"> {{ record.state }} </td>
+            <td style="word-wrap: break-word;"> {{ record.zipcode }} </td>
+            <td style="word-wrap: break-word;"> {{ record.created_at }} </td>          
+          </tr>
+      {% endfor %}
+      {% else %}
+      <tr>
+          <td colspan="9">No records found.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+
+{% else %}
+<div class="col-md-6 offset-md-3">
+<h1>Login</h1>
+<br/>
+
+<form method = "POST" action = "{% url 'home' %}">
+    {% csrf_token %}
+        <br/>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div>
+        <br/>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </form>
+</form>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+
+<h1>Update Record</h1>
+<br/>
+    
+<form method = "POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <a href="{% url 'record' current_record.id %}" class="btn" style="color: white; background-color: #F9CC48;">Back to Record</a>
+    <button type="submit" class="btn" style="color: white; background-color: #52B744;">Update Record</button>
+    
+</form>
+    
+</div>
+<br/>
+
+{% endblock %}
