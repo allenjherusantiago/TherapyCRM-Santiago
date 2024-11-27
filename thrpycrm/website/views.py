@@ -63,7 +63,7 @@ def home(request):
 
 def logout_user(request):
     logout(request)
-    messages.warning(request, "You Have Been Logged Out...")
+    messages.error(request, "You Have Been Logged Out...")
     return redirect('home') 
 
 def register_user(request):

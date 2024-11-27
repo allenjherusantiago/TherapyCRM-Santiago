@@ -15,24 +15,24 @@ Therapy CRM is a web-based system designed to manage and maintain records for th
 - **Search and Filter**: Find specific customer records based on various filters.
 - **Authentication**: Secure login and registration for users.
 
-## How to Run Locally:
+# How to run locally:
 
-1. **Clone the repository**:
+## Clone the repository:
     cd thrpy-crm
-2. **Create a virtual environment**
+## Create a virtual environment:
     python -m venv venv
-3. **Activate the virtual environment**
+## Activate the virtual environment:
     venv\Scripts\activate
-4. **Install required dependencies**
+## Install required dependencies:
     pip install -r requirements.txt
-5. **Set up the database**
+## Set up the database
     Make sure to update the database configuration in the settings.py file. 
-    Run the migrations to set up the database schema:
-        python manage.py migrate
-6. **Create a superuser for the admin panel**
+## Run the migrations to set up the database schema:
+    python manage.py migrate
+## Create a superuser for the admin panel
     python manage.py createsuperuser
-7. **Run the server**
+## Run the server
     python manage.py runserver
-8. **Access the application**
+## Access the application
     http://127.0.0.1:8000/
     
