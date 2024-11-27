@@ -1,4 +1,4 @@
-# TherapyCRM
+# Hope Seeker
 
 ## Student Details
     Allen Jheru Santiago
@@ -7,7 +7,7 @@
 
 ## Description of the System
 
-Therapy CRM is a web-based system designed to manage and maintain records for therapy clients. It allows therapists to store customer information such as name, contact details, and diagnosis notes. The system also includes the ability to update customer records, manage notes, and delete records when necessary. The goal is to provide a user-friendly interface to help therapists efficiently manage their client records in a secure and organized manner.
+Hope Seeker is a web-based system designed to manage and maintain records for therapy clients. It allows therapists to store customer information such as name, contact details, and diagnosis notes. The system also includes the ability to update customer records, manage notes, and delete records when necessary. The goal is to provide a user-friendly interface to help therapists efficiently manage their client records in a secure and organized manner.
 
 ### Features:
 - **Customer Records**: Add, update, and delete customer records.
